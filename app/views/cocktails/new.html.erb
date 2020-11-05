@@ -1,8 +1,8 @@
-<h1>Cocktails#new</h1>
-<p>Find me in app/views/cocktails/new.html.erb</p>
-
+<h1>Let's a new cock'tail!</h1>
 
 <%= simple_form_for @cocktail do |f| %>
-  <%= f.input :name %>
-  <%= f.button :submit %>
+  <%= f.input :name, label: "What's the name of your delicious cocktail?"%>
+  <%= f.input :description, label: "How would you describe it?"%>
+  <%= f.input :image_url, label: "You might have a cool picture of your magic licor!(URL)"%>
+  <%= f.button :submit, 'Add!', class:"btn btn-primary w-20"%>
 <% end %>
