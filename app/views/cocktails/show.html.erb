@@ -1,23 +1,29 @@
-<h1><%= @cocktail.name %> </h1>
-<ul>
-  <% @cocktail.doses.each do |dose| %>
-    <li><%= dose.description %> of <%= dose.ingredient.name %> <%= link_to "Delete", dose_path(dose), method: :delete %></li>
-  <% end %>
-</ul>
+<div class="picture-and-info d-flex justify-content-between">
+  <img src="<%= @cocktail.image_url %>" alt="cocktpicture">
+  <div class="info flex-grow-1 px-4">
+    <h1><%= @cocktail.name %> </h1>
+    <h3>Ingredients</h3>
+      <ul>
+        <% @cocktail.doses.each do |dose| %>
+          <li><%= dose.description %> of <%= dose.ingredient.name %> <%= link_to "Delete", dose_path(dose), method: :delete %></li>
+        <% end %>
+      </ul>
+      <h3>Reviews</h3>
+      <ul>
+        <% @cocktail.reviews.each do |review| %>
+          <li><%= review.content %>  <%= review.rating %>/5</li>
+        <% end %>
+      </ul>
+  </div>
+</div>
 <br>
-<h3>Reviews</h3>
-<ul>
-  <% @cocktail.reviews.each do |review| %>
-    <li><%= review.content %>  <%= review.rating %>/5</li>
-  <% end %>
-</ul>
 <br>
 <p>
   <h3>Add an ingredient! </h3>
   <%= simple_form_for [@cocktail, @dose] do |f| %>
     <%= f.association :ingredient, input_html: { class: 'select2' } %>
     <%= f.input :description, :label => 'Quantity' %>
-    <%= f.button :submit, 'Add!', class:"btn btn-primary w-50"%>
+    <%= f.button :submit, 'Add!', class:"btn btn-primary"%>
   <% end %>
 </p>
 <p>
@@ -26,6 +32,6 @@
     <%= f.input :author, :label => 'Who is talking?' %>
     <%= f.input :rating, :label => 'On five what is this cocktail worth?' %>
     <%= f.input :content, :label => 'Tell us more about it' %>
-    <%= f.button :submit, 'Add!', class:"btn btn-primary w-50"%>
+    <%= f.button :submit, 'Add!', class:"btn btn-primary"%>
   <% end %>
 </p>

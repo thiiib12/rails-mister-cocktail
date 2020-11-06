@@ -17,3 +17,11 @@ h1{
   color: #9ad3bc;
 }
 
+.picture-and-info {
+  img {
+    height: 300px;
+    width: 300px;
+    object-fit: cover;
+  }
+}
+
